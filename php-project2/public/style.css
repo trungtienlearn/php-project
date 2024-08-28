@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+/* Custom properties/variables  */
+:root {
+  --main-white: #f0f0f0;
+  --main-red: #be3144;
+  --main-blue: #45567d;
+  --main-gray: #303841;
+  --nav-yellow: #ff9900;
+  --sub-font: 'Roboto Slab', serif;
+}
+
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* box-sizing and font sizing */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+
+  /* Set font size for easy rem calculations
+   * default document font size = 16px, 1rem = 16px, 100% = 16px
+   * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
+  */
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+/* A few media query to set some font sizes at different screen sizes.
+ * This helps automate a bit of responsiveness.
+ * The trick is to use the rem unit for size values, margin and padding.
+ * Because rem is relative to the document font size
+ * when we scale up or down the font size on the document
+ * it will affect all properties using rem units for the values.
+*/
+
+/* I am using the em unit for breakpoints
+ * The calculation is the following
+ * screen size divided by browser base font size
+ * As an example: a breakpoint at 980px
+ * 980px / 16px = 61.25em
+*/
+
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+/* 460px / 16px = 28.75em */
+@media (max-width: 28.75em) {
+  html {
+    font-size: 55%;
+  }
+}
+
+/* Base styles */
+
+body {
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 1.8rem; /* 18px */
+  font-weight: 400;
+  line-height: 1.4;
+/*  color: var(--main-white);*/
+}
+.navbar {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	color: black;
+	background-color: var(--main-white);
+}
+.nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	list-style: none;
+}
+.nav li {
+	padding: 1rem;
+}
+.nav a {
+	text-decoration: none;
+	font-weight: bold;
+	color: var(--main-blue);
+}
+.nav a:hover {
+	color: var(--main-red);
+}
+.brand {
+	font-size: 2rem;
+	font-weight: 700;
+	color: black;
+	text-transform: uppercase;
+}
+.mainpage {
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+	gap: 0;
+}
+.mainpage main {
+	width: 80%;
+}
+.mainpage aside {
+	width: 20%;
+	padding: 1rem;
+}
+.post-query {
+	display: flex;
+	flex-wrap: wrap;
+}
+.query-post-wrap {
+	margin: .5rem;
+	width: 300px;
+}
+.img-post-thumbnail {
+	width: 300px;
+	height: 200px;
+	object-fit: cover;
+	display: block;
+	margin: auto;
+}
+.post-body {
+	border: 2px solid var(--main-white); 
+}
+.post-title {
+	font-weight: 700;
+}
+.post-description {
+	font-size: 1.6rem;
+	font-style: italic;
+}
+.post-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: .5rem;
+	font-size: 1.3rem;
+	font-style: italic;
+	background-color: var(--main-white);
+}
+footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--main-white);
+}
+.link-copyright {
+	font-style: italic;
+	text-decoration: none;
+	color: var(--main-gray);
+}
+.link-copyright:hover {
+	color: var(--main-red);
+}
+
+/* Popup container */
+        .popup {
+            display: none; /* Ẩn popup mặc định */
+            position: fixed; /* Vị trí cố định */
+            z-index: 1; /* Lớp phía trên */
+            left: 0;
+            top: 0;
+            width: 100%; /* Chiếm toàn bộ màn hình */
+            height: 100%; /* Chiếm toàn bộ màn hình */
+            overflow: auto; /* Kích hoạt cuộn nếu cần */
+            background-color: rgb(0,0,0); /* Màu nền đen */
+            background-color: rgba(0,0,0,0.4); /* Nền với độ mờ */
+        }
+
+        /* Popup nội dung */
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% từ trên và tự động căn giữa */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Chiếm 80% chiều rộng */
+        }
+
+        /* Đóng button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
